@@ -1,11 +1,20 @@
-from unittest.mock import patch
+def clear_names(file_name: str) -> list:
+    """ Функция для очистки имён от лишних символов """
+    new_names_lict = list()
+    with open('data/' + file_name) as names_file:
+        namas_list = names_file.read().split()
+        for name_item in namas_list:
+            new_name = ''
+            for symbol in name_item:
+                if symbol.isalpha():
+                    new_name += symbol
+            if new_name.isalpha():
+                new_names_lict.append(new_name)
+    return new_names_lict
 
 
-def get_mames(txt):
-    with open(txt, 'r',encoding="utf-8") as fail:
-        for lains in fail:
-            print(lains)
+if __name__ == '__name__':
+    cleared_name = clear_names('names.txt')
 
-
-#path = '../'
-get_mames('data/names.txt')
+    for i in cleared_name:
+        print(i)
