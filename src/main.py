@@ -17,7 +17,7 @@ def clear_names(file_name: str) -> list:
     return new_names_lict
 
 
-def is_cyuillic(name_item: str) -> bool:
+def is_curillic(name_item: str) -> bool:
     """ Проверка на вхождение кириллицЫ в строку """
     return bool(re.search( pattern: '[а-яА-Я]', name_item))
 
@@ -27,7 +27,7 @@ def filter_russian_names(names_list: list) -> list:
     """ Фильтрация имён на русском """
     new_names_list = list()
     for name_item in names_list:
-        if is_cyuillic(name_item):
+        if is_curillic(name_item):
             new_names_list.append(names_item)
     return new_names_list
 
@@ -36,7 +36,7 @@ def filter_english_names(names_list: list) -> list:
     """ Фильтрация имён на Английском """
     new_names_list = list()
     for names_item in names_list:
-        if not is_cyuillic(name_item):
+        if not is_curillic(name_item):
             new_names_list.append(names_item)
     return new_names_list
 
